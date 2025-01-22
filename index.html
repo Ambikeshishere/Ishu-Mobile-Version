@@ -210,10 +210,11 @@
 }
 
 .principal {
-    
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .principal img {
@@ -384,7 +385,11 @@
 <section id="principals-pen">
     <h2>Principal's Pen</h2>
     <div class="principal">
-        <img src="principal.jpg" alt="Principal's Photo">
+        <div class="alumni-member">
+            <img src="principal.jpg" alt="Alumni 1">
+            <h3>Ishu Sachan</h3>
+            <p>Shri K.L. Education centre</p>
+        </div>
         <div class="principal-message">
             <p>"Welcome to our school! We are committed to fostering a positive environment where each student thrives academically and personally. Together, we can achieve great things!"</p>
             <p><strong>Dr. John Doe</strong></p>
@@ -434,7 +439,7 @@
 
     <!-- Toppers Section -->
     <section id="alumni">
-        <h2>Our Toppers</h2>
+        <h2>Our Intermediate Toppers</h2>
         <div class="alumni">
             <div class="alumni-member">
                 <img src="Topper1.jpg" alt="Alumni 1">
@@ -449,6 +454,27 @@
             <div class="alumni-member">
                 <img src="Topper3.jpg" alt="Alumni 2">
                 <h3>Lovely Badhani</h3>
+                <p>91%</p>
+            </div>
+            
+        </div>
+    </section>
+    <section id="alumni">
+        <h2>Our High School Toppers</h2>
+        <div class="alumni">
+            <div class="alumni-member">
+                <img src="HStopper1.jpg" alt="Alumni 1">
+                <h3>Krishna Kaul</h3>
+                <p>92%</p>
+            </div>
+            <div class="alumni-member">
+                <img src="HStopper2.jpg" alt="Alumni 2">
+                <h3>Mrunal Shankar</h3>
+                <p>91%</p>
+            </div>
+            <div class="alumni-member">
+                <img src="HStopper3.jpg"Alumni 2">
+                <h3>Raftar</h3>
                 <p>91%</p>
             </div>
             
@@ -473,6 +499,16 @@
             <img src="Doctor.jpg" alt="Alumni 3">
             <h3>Michael Johnson</h3>
             <p>Doctor</p>
+        </div>
+        <div class="alumni-member">
+            <img src="TONI.jpg" alt="Alumni 3">
+            <h3>Toni Stark</h3>
+            <p>Stark Industries</p>
+        </div>
+        <div class="alumni-member">
+            <img src="Steve.jpg" alt="Alumni 3">
+            <h3>Steve Rogers</h3>
+            <p>Captain In Army</p>
         </div>
     </div>
 </section>
