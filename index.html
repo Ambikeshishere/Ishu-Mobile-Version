@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri K.L. Education Center</title>
+    <style>
+        /* Basic styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+        }
+
+        /* Header styling with background image */
+        header {
+            background-image: url('background.jpg'); /* Replace with your own image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            height: 15vh; /* Ensures header takes up at least 15% of viewport height */
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+            display: flex;
+        }
+
+        header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            
+        }
+        header .header-name {
+            margin-left: 5px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 27px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        /* Menu icon (hamburger style) */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: rgb(24, 22, 22);
+            cursor: pointer;
+            padding: 15px;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: #333;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Dropdown menu styles */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Section styles */
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            /* Hide regular navbar and show menu icon */
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                padding: 15px;
+                text-align: center;
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 15px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .menu-active {
+                display: flex;
+            }
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        .gallery img.active {
+            opacity: 1;
+        }
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .footer-section {
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* School Stats Section */
+        .school-stats {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .stat-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .stat-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .stat-item p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+        /* Principal's Pen Section */
+#principals-pen {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#principals-pen h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.principal {
+    
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.principal img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+    object-fit: cover;
+    border: 2px solid #333;
+}
+
+.principal-message {
+    max-width: 600px;
+    text-align: left;
+}
+
+.principal-message p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.principal-message p strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#gallery h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Set a fixed height for the gallery */
+    overflow: hidden;
+}
+
+.gallery img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.gallery img.active {
+    opacity: 1;
+}
+
+/* Alumni Section */
+#alumni {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#alumni h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.alumni {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.alumni-member {
+    text-align: center;
+    width: 250px; /* Fixed width for each alumni profile */
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alumni-member img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.alumni-member h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+    
+}
+
+.alumni-member p {
+    font-size: 1em;
+    color: #777;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+    .alumni {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .alumni-member {
+        width: 80%;
+    }
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="logo.jpg">
+        <div class="header-name"><h1>Shri K.L Education Center</h1>
+            <p>Affilated to UP Board (ISO 9001:2025)</p>
+        </div>
+        
+    </header>
+
+    <!-- Menu Icon (Hamburger) -->
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul id="menu">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#stats">School Stats</a></li>
+            <li><a href="#toppers">Toppers</a></li>
+            <li><a href="#alumni">Alumni</a></li>
+            <li><a href="index.pdf">Admission Form</a></li>
+            <li><a href="Timetable.pdf">Time- Table</a></li>
+            <li><a href="Fee.pdf">Fee- Structure</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Us Section -->
+    <!-- About Us Section -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Our school is committed to providing quality education and holistic development to students. We offer a wide range of academic and extracurricular activities.</p>
+</section>
+
+<!-- Principal's Pen Section -->
+<section id="principals-pen">
+    <h2>Principal's Pen</h2>
+    <div class="principal">
+        <img src="principal.jpg" alt="Principal's Photo">
+        <div class="principal-message">
+            <p>"Welcome to our school! We are committed to fostering a positive environment where each student thrives academically and personally. Together, we can achieve great things!"</p>
+            <p><strong>Dr. John Doe</strong></p>
+            <p>Principal</p>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="image.jpg" alt="Gallery Image 1">
+        <img src="image2.jpg" alt="Gallery Image 2">
+        <img src="image3.jpg" alt="Gallery Image 3">
+        <img src="image4.jpg" alt="Gallery Image 4">
+        <img src="image5.jpg" alt="Gallery Image 5">
+    </div>
+
+        
+    
+</section>
+
+
+    <!-- School Stats Section -->
+    <section id="stats">
+        <h2>School Stats</h2>
+        <div class="school-stats">
+            <div class="stat-item">
+                <h4>Total Students</h4>
+                <img src="student.png" alt="Students Icon">
+                
+                <p>1000</p>
+            </div>
+            <div class="stat-item">
+                <h4>Total Teachers</h4>
+                <img src="teacher.png" alt="Teachers Icon">
+                <p>50</p>
+            </div>
+            <div class="stat-item">
+                <h4>Pass Percentage</h4>
+                <img src="graduation.png" alt="Pass Percentage Icon">
+                <p>95%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toppers Section -->
+    <section id="alumni">
+        <h2>Our Toppers</h2>
+        <div class="alumni">
+            <div class="alumni-member">
+                <img src="Topper1.jpg" alt="Alumni 1">
+                <h3>Ishu Sachan</h3>
+                <p>92%</p>
+            </div>
+            <div class="alumni-member">
+                <img src="topper2.jpg" alt="Alumni 2">
+                <h3>Nupur Gandhi</h3>
+                <p>91%</p>
+            </div>
+            <div class="alumni-member">
+                <img src="topper3.jpg" alt="Alumni 2">
+                <h3>Lovely Badhani</h3>
+                <p>91%</p>
+            </div>
+            
+        </div>
+    </section>
+
+<!-- Alumni Section -->
+<section id="alumni">
+    <h2>Our Esteemed Alumni</h2>
+    <div class="alumni">
+        <div class="alumni-member">
+            <img src="CEO.jpg" alt="Alumni 1">
+            <h3>John Doe</h3>
+            <p>CEO of XYZ Corporation</p>
+        </div>
+        <div class="alumni-member">
+            <img src="actor.jpg" alt="Alumni 2">
+            <h3>Jane Smith</h3>
+            <p>Actor</p>
+        </div>
+        <div class="alumni-member">
+            <img src="Doctor.jpg" alt="Alumni 3">
+            <h3>Michael Johnson</h3>
+            <p>Doctor</p>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: info@ourschool.com</p>
+            <p>Phone: +123-456-7890</p>
+        </div>
+        <div class="footer-section">
+            <h3>Address</h3>
+            <p>123 School Street, Education City, ABC</p>
+        </div>
+        <p>&copy; 2025 Our School. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for toggling the menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('menu-active');
+        }
+        
+    </script>
+    <!-- JavaScript to shuffle gallery images every 10 seconds -->
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('#gallery .gallery img');
+
+    function showNextImage() {
+        // Hide the current image
+        images[currentIndex].classList.remove('active');
+        
+        // Move to the next image
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // Show the next image
+        images[currentIndex].classList.add('active');
+    }
+
+    // Set the first image to active initially
+    images[currentIndex].classList.add('active');
+
+    // Change images every 10 seconds
+    setInterval(showNextImage, 10000);
+</script>
+
+
+</body>
+</html>
